@@ -186,10 +186,13 @@ function Dashboard() {
                 { date, start_time: time },
                 { headers: { Authorization: token } }
             );
+            alert("Added to queue! Waiting for an expert...");
             toast.success('Added to queue! Waiting for an expert...', { id: toastId });
         } catch (error) {
             const errorMsg = error.response?.data?.error;
             if (errorMsg === "User already in the queue") {
+                alert("You are already in the queue.");
+
                 toast.error("You are already in the queue.", { id: toastId });
             } else {
                 console.error("Queue error:", errorMsg);
